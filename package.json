@@ -5,11 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "deploy": "sh ./deploy.sh",
-    "postinstall": "tsc",
+    "postinstall": "npm run tsc",
     "start": "node dist/server/index.js",
     "dev": "tsx -r dotenv/config server/index.ts",
     "server": "tsx -r dotenv/config server/index.ts",
-    "ingest": "tsx -r dotenv/config scripts/ingest.ts"
+    "ingest": "tsx -r dotenv/config scripts/ingest.ts",
+    "tsc": "tsc"
   },
   "author": "",
   "license": "ISC",
