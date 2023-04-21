@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "deploy": "sh ./deploy.sh",
-    "postinstall": "npm run tsc",
+    "heroku-postbuild": "npm run tsc",
     "start": "node dist/server/index.js",
     "dev": "tsx -r dotenv/config server/index.ts",
     "server": "tsx -r dotenv/config server/index.ts",
