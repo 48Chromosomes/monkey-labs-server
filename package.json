@@ -2,10 +2,12 @@
   "name": "monkeylabs-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "deploy": "sh ./deploy.sh",
-    "start": "tsx -r dotenv/config server/index.ts",
+    "postinstall": "tsc",
+    "start": "node dist/server/index.ts",
+    "dev": "tsx -r dotenv/config server/index.ts",
     "server": "tsx -r dotenv/config server/index.ts",
     "ingest": "tsx -r dotenv/config scripts/ingest.ts"
   },
