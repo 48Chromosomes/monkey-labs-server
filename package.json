@@ -27,5 +27,9 @@
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.11",
     "@types/prompts": "^2.4.4"
+  },
+  "engines": {
+    "node": "^18.15.0",
+    "npm": "^9.5.0"
   }
 }
