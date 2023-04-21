@@ -4,13 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "deploy": "sh ./deploy.sh",
-    "heroku-postbuild": "npm run tsc",
+    "build": "tsc",
+    "heroku-postbuild": "npm run build",
     "start": "node dist/server/index.js",
     "dev": "tsx -r dotenv/config server/index.ts",
     "server": "tsx -r dotenv/config server/index.ts",
-    "ingest": "tsx -r dotenv/config scripts/ingest.ts",
-    "tsc": "tsc"
+    "ingest": "tsx -r dotenv/config scripts/ingest.ts"
   },
   "author": "",
   "license": "ISC",
