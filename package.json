@@ -7,7 +7,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "heroku-postbuild": "npm run build",
-    "start": "node dist/server/index.js",
+    "start": "node dist/bundle.cjs",
     "dev": "tsx -r dotenv/config server/index.ts",
     "server": "tsx -r dotenv/config server/index.ts",
     "ingest": "tsx -r dotenv/config scripts/ingest.ts"

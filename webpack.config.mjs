@@ -8,7 +8,7 @@ export default {
   target: 'node',
   entry: './server/index.ts',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.cjs',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
