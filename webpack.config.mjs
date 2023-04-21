@@ -36,12 +36,8 @@ export default {
       '@': path.resolve(__dirname, '.'),
     },
   },
-  externals: [
-    function ({ request }, callback) {
-      if (request === 'express') {
-        return callback(null, 'commonjs ' + request);
-      }
-      callback();
-    },
-  ],
+  externals: {
+    'hnswlib-node': 'commonjs hnswlib-node',
+    express: 'commonjs express',
+  },
 };
