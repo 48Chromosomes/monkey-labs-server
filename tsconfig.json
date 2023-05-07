@@ -1,21 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": ".",
+    "target": "es2020",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "module": "ES2020",
+    "module": "es2020",
     "moduleResolution": "node",
+    "moduleSuffixes": [".ts", ""],
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
     "outDir": "dist",
+    "sourceMap": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "plugins": [{ "transform": "typescript-transform-paths" }]
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "scripts/experiments/**/*"]
 }

@@ -1,0 +1,6 @@
+{
+  "ext": "ts",
+  "exec": "tsx -r dotenv/config server/index.ts",
+  "inspect": true,
+  "verbose": true
+}
