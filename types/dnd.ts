@@ -1,10 +1,4 @@
 export type ChatLog = {
-  role: 'apiMessage' | 'userMessage';
-  content: string;
-  silent?: boolean;
-  sourceDocs?: Document[];
+	role: 'apiMessage' | 'userMessage';
+	content: string;
 };
-
-export interface PromptMessage {
-  [key: string]: string;
-}

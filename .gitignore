@@ -1,3 +1,5 @@
 node_modules
 .env
 dist
+gcp.sh
+thewizard-380520-cbf4b8c11486.json

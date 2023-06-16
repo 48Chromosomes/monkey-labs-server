@@ -9,6 +9,8 @@ import listIndexesHandler from './listIndexes';
 
 import promptHandler from './chronicles/prompt';
 import characterHandler from './chronicles/character';
+import imageGenerationHandler from './chronicles/leonardo';
+import synthesizeHandler from './chronicles/synthesize';
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.post('/list-indexes', listIndexesHandler);
 // Chronicles
 app.post('/chronicles/prompt', promptHandler);
 app.get('/chronicles/character', characterHandler);
+app.post('/chronicles/image', imageGenerationHandler);
+app.post('/chronicles/synthesize', synthesizeHandler);
 
 app.listen(app.get('port'), () => {
 	console.log(`Server is running on port ${app.get('port')}`);
