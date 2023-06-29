@@ -26,7 +26,6 @@ export default async function promptHandler(req: Request, res: Response) {
 	try {
 		const storyCompletion = await openai.createChatCompletion({
 			model: 'gpt-4',
-			//model: 'gpt-3.5-turbo',
 			messages,
 			temperature: 0.8,
 		});
@@ -41,7 +40,7 @@ export default async function promptHandler(req: Request, res: Response) {
 
 		res.status(200).json({
 			story,
-			roll_dice: rollCompletionResponse,
+			roll_dice: rollCompletionResponse?.toLowerCase().includes('true'),
 			visual_description: visualDescriptionCompletionResponse,
 		});
 	} catch (error: any) {
@@ -51,23 +50,33 @@ export default async function promptHandler(req: Request, res: Response) {
 }
 
 const rollCompletion = async (story: string) => {
-	const rollCompletion = await openai.createCompletion({
-		model: 'text-davinci-003',
-		prompt: await ROLL_PROMPT_SYSTEM_MESSAGE.format({ story }),
-		temperature: 0,
-		max_tokens: 200,
-	});
+	try {
+		const rollCompletion = await openai.createCompletion({
+			model: 'text-davinci-003',
+			prompt: await ROLL_PROMPT_SYSTEM_MESSAGE.format({ story }),
+			temperature: 0,
+			max_tokens: 200,
+		});
 
-	return rollCompletion.data.choices[0].text;
+		return rollCompletion.data.choices[0].text;
+	} catch (error: any) {
+		console.log(error.response.data);
+		return;
+	}
 };
 
 const visualDescriptionCompletion = async (story: string) => {
-	const visualDescriptionCompletion = await openai.createCompletion({
-		model: 'text-davinci-003',
-		prompt: await VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE.format({ story }),
-		temperature: 0.5,
-		max_tokens: 20,
-	});
+	try {
+		const visualDescriptionCompletion = await openai.createCompletion({
+			model: 'text-davinci-003',
+			prompt: await VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE.format({ story }),
+			temperature: 0.3,
+			max_tokens: 200,
+		});
 
-	return visualDescriptionCompletion.data.choices[0].text;
+		return visualDescriptionCompletion.data.choices[0].text;
+	} catch (error: any) {
+		console.log(error.response.data);
+		return;
+	}
 };

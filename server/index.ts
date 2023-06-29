@@ -11,6 +11,9 @@ import promptHandler from './chronicles/prompt';
 import characterHandler from './chronicles/character';
 import imageGenerationHandler from './chronicles/leonardo';
 import synthesizeHandler from './chronicles/synthesize';
+import youTubeChatHandler from './chronicles/liveChat';
+import introHandler from './chronicles/intro';
+import outroHandler from './chronicles/outro';
 
 const app = express();
 
@@ -31,6 +34,11 @@ app.post('/chronicles/prompt', promptHandler);
 app.get('/chronicles/character', characterHandler);
 app.post('/chronicles/image', imageGenerationHandler);
 app.post('/chronicles/synthesize', synthesizeHandler);
+app.post('/chronicles/livechat', youTubeChatHandler);
+app.post('/chronicles/intro', introHandler);
+app.get('/chronicles/outro', outroHandler);
+
+import './chronicles/stream';
 
 app.listen(app.get('port'), () => {
 	console.log(`Server is running on port ${app.get('port')}`);

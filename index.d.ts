@@ -1,7 +1,8 @@
 declare module 'pdf-parse/lib/pdf-parse.js' {
-  import pdf from 'pdf-parse';
+	import pdf from 'pdf-parse';
 
-  export default pdf;
+	export default pdf;
 }
 
 declare module 'extract-json-string';
+declare module 'wrtc';
