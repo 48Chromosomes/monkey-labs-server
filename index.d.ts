@@ -5,4 +5,3 @@ declare module 'pdf-parse/lib/pdf-parse.js' {
 }
 
 declare module 'extract-json-string';
-declare module 'wrtc';

@@ -38,8 +38,6 @@ app.post('/chronicles/livechat', youTubeChatHandler);
 app.post('/chronicles/intro', introHandler);
 app.get('/chronicles/outro', outroHandler);
 
-import './chronicles/stream';
-
 app.listen(app.get('port'), () => {
 	console.log(`Server is running on port ${app.get('port')}`);
 });
