@@ -4,7 +4,7 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"build": "webpack --mode production",
+		"build": "npx tsc",
 		"heroku-postbuild": "npm run build",
 		"start": "node dist/bundle.cjs",
 		"dev": "nodemon",
