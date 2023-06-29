@@ -1,5 +1,7 @@
 node_modules
 .env
+.env.heroku
 dist
 gcp.sh
-thewizard-380520-cbf4b8c11486.json
+google-credentials.json
+env_vars.sh
