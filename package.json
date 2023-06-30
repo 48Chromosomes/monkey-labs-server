@@ -4,9 +4,9 @@
 	"description": "",
 	"type": "commonjs",
 	"scripts": {
-		"build": "npx tsc",
+		"build": "npx tsc && tscpaths -p tsconfig.json -s . -o ./dist",
 		"heroku-postbuild": "npm run build",
-		"start": "ts-node --project tsconfig.prod.json -r tsconfig-paths/register dist/server/index.js",
+		"start": "node dist/server/index.js",
 		"dev": "nodemon",
 		"server": "tsx -r dotenv/config server/index.ts",
 		"ingest": "tsx -r dotenv/config scripts/ingest.ts",
@@ -34,7 +34,8 @@
 		"prompts": "^2.4.2",
 		"replicate-api": "^0.4.4",
 		"ts-node": "^10.9.1",
-		"tsconfig-paths": "^4.2.0"
+		"tsconfig-paths": "^4.2.0",
+		"tscpaths": "^0.0.9"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.13",
