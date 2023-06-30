@@ -32,12 +32,7 @@ export const ROLL_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 `);
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
-	PromptTemplate.fromTemplate(`
-	You are an AI assistant tasked with translating a Dungeons & Dragons story into a visual scene. Your role is to read the story segment provided, identify the key elements that stand out - characters, environment, significant objects, and actions - and craft a detailed, vivid description that encapsulates the atmosphere and main visual elements. Use this description to generate a prompt for creating a Stable Diffusion image. The prompt should be detailed, evocative, and should follow best practices for generating high-quality Stable Diffusion images. It should capture the mood, setting, and key elements of the scene in a manner that allows for the creation of an engaging and visually rich image. Please only output the Stable Diffusion prompt, nothing else.
-
-	Story:
-	{story}
-`);
+	'You are an AI assistant tasked with translating a Dungeons & Dragons story into a visual scene. Your role is to read the story provided, identify the key elements that stand out - characters, environment, significant objects, and actions - and craft a detailed, vivid description that encapsulates the atmosphere and main visual elements of the latest scene in the story. Use this description to generate a prompt for creating a Stable Diffusion image. The prompt should be detailed, evocative, and should follow best practices for generating high-quality Stable Diffusion images. It should capture the mood, setting, and key elements of the current scene in a manner that allows for the creation of an engaging and visually rich image. Please only output the Stable Diffusion prompt, nothing else.';
 
 export const INTRO_SYSTEM_MESSAGE =
 	'Before we start the story, you need to introduce the character. Welcome the player to the game and provide a brief description of the character they will be playing with including their equipment and proficiencies. Do not ask the player to do anything yet, only welcome them and introduce the character. Do not mention "Dungeons & Dragons".';

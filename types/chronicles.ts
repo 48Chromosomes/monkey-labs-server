@@ -1,4 +1,6 @@
+import { ChatCompletionRequestMessageRoleEnum } from 'openai';
+
 export type ChatLog = {
-	role: 'apiMessage' | 'userMessage';
+	role: ChatCompletionRequestMessageRoleEnum;
 	content: string;
 };

@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ChatCompletionRequestMessage } from 'openai';
 
 import {
 	STORY_PROMPT_SYSTEM_MESSAGE,
@@ -8,12 +9,13 @@ import {
 import { openai } from '@/utilities/openai';
 
 export default async function promptHandler(req: Request, res: Response) {
-	const processedMessages = req.body.chatLogs.map((log: any) => {
-		const { content, role } = log;
-		return { role, content: content.story };
-	});
+	const processedMessages: ChatCompletionRequestMessage[] =
+		req.body.chatLogs.map((log: any) => {
+			const { content, role } = log;
+			return { role, content: content.story };
+		});
 
-	const messages = [
+	const messages: ChatCompletionRequestMessage[] = [
 		{
 			role: 'system',
 			content: await STORY_PROMPT_SYSTEM_MESSAGE.format({
@@ -30,12 +32,13 @@ export default async function promptHandler(req: Request, res: Response) {
 			temperature: 0.8,
 		});
 
-		const story = storyCompletion.data.choices[0].message?.content;
+		const story: string | undefined =
+			storyCompletion.data.choices[0].message?.content;
 
 		const [rollCompletionResponse, visualDescriptionCompletionResponse] =
 			await Promise.all([
 				rollCompletion(story as string),
-				visualDescriptionCompletion(story as string),
+				visualDescriptionCompletion(story as string, processedMessages),
 			]);
 
 		res.status(200).json({
@@ -65,16 +68,31 @@ const rollCompletion = async (story: string) => {
 	}
 };
 
-const visualDescriptionCompletion = async (story: string) => {
+const visualDescriptionCompletion = async (
+	story: string,
+	processedMessages: ChatCompletionRequestMessage[],
+) => {
+	const messages: ChatCompletionRequestMessage[] = [
+		{
+			role: 'system',
+			content: VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE,
+		},
+		...processedMessages,
+		{
+			role: 'assistant',
+			content: story,
+		},
+	];
+
 	try {
-		const visualDescriptionCompletion = await openai.createCompletion({
-			model: 'text-davinci-003',
-			prompt: await VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE.format({ story }),
+		const visualDescriptionCompletion = await openai.createChatCompletion({
+			model: 'gpt-4',
+			messages,
 			temperature: 0.3,
 			max_tokens: 200,
 		});
 
-		return visualDescriptionCompletion.data.choices[0].text;
+		return visualDescriptionCompletion.data.choices[0].message?.content;
 	} catch (error: any) {
 		console.log(error.response.data);
 		return;
