@@ -17,13 +17,13 @@ import outroHandler from './chronicles/outro';
 
 const app = express();
 
-var corsOptions = {
-	origin: 'https://chronicles-five.vercel.app/',
-	optionsSuccessStatus: 200,
-};
-
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(
+	cors({
+		origin: '*',
+		optionsSuccessStatus: 200,
+	}),
+);
 
 app.set('port', process.env.PORT);
 
