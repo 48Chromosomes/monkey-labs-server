@@ -1,0 +1,29 @@
+
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "target": "es5",
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "esModuleInterop": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "moduleSuffixes": [".ts", ""],
+      "allowSyntheticDefaultImports": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "incremental": true,
+      "outDir": "dist",
+      "sourceMap": true,
+      "noEmit": true,
+      "paths": {
+        "@/*": ["./dist/*"]
+      },
+      "plugins": [{ "transform": "typescript-transform-paths" }]
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules", "scripts/experiments/**/*"]
+  }
+  
