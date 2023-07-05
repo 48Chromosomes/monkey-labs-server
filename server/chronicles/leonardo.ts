@@ -12,7 +12,7 @@ export default async function imageGenerationHandler(
 
 		const response = await sdk.createGeneration({
 			prompt: req.body.prompt,
-			modelId: 'a097c2df-8f0c-4029-ae0f-8fd349055e61',
+			modelId: 'ac614f96-1082-45bf-be9d-757f2d31c174',
 			width: req.body.width,
 			height: req.body.height,
 			sd_version: 'v1_5',
