@@ -21,9 +21,7 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 `);
 
 export const ROLL_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
-	You are an AI assistant programmed with a precise task. Examine the following text segment from a Dungeons & Dragons narrative and determine whether the Dungeon Master has asked the player to roll a D20 dice. If the player has been asked to roll a dice, your response must be the lowercase word 'true'. If no such prompt exists, your response must be the lowercase word 'false'. Your response must strictly follow this format, and should not include any newline characters or extra spaces. 
-
-	Please examine the following text and give your verdict:
+	Examine the following text segment from a story and determine whether the player has been asked to roll a dice. If the player has been asked to roll a dice, your response must be the lowercase word 'true'. If no such prompt exists, your response must be the lowercase word 'false'. Your response must strictly follow this format, and should not include any newline characters or extra spaces. 
 
 	Please read the following text and respond accordingly:
 
@@ -32,10 +30,10 @@ export const ROLL_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 `);
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
-	'You are an AI assistant tasked with translating a Dungeons & Dragons story into a visual scene. Your role is to read the story provided, identify the key elements that stand out - characters, environment, significant objects, and actions - and craft a detailed, vivid description that encapsulates the atmosphere and main visual elements of the latest scene in the story. Use this description to generate a prompt for creating a Stable Diffusion image. The prompt should be detailed, evocative, and should follow best practices for generating high-quality Stable Diffusion images. It should capture the mood, setting, and key elements of the current scene in a manner that allows for the creation of an engaging and visually rich image. Please only output the Stable Diffusion prompt, nothing else. Do not mention the dice rolls, only the visual description of the current scene.';
+	'You are an AI assistant tasked with creating a Stable diffusion prompt for a Dungeons & Dragons story. Your role is to read the story provided, identify the key elements that stand out - characters, environment, significant objects, and actions - and craft a detailed, vivid prompt that encapsulates the atmosphere and main visual elements of the latest scene in the story. Use this description to generate a prompt for creating a Stable Diffusion image. The prompt should be detailed, evocative, and should follow best practices for generating high-quality Stable Diffusion images. It should capture the mood, setting, and key elements of the current scene in a manner that allows for the creation of an engaging and visually rich image. Please only output the Stable Diffusion prompt, nothing else. Do not mention dice, only the visual description of the current scene. Respond only with visual keywords seperated by spaces that describe the scene.';
 
 export const INTRO_SYSTEM_MESSAGE =
 	'Before we start the story, you need to introduce the character. Welcome the player to the game and provide a brief description of the character they will be playing with including their equipment and proficiencies. Do not ask the player to do anything yet, only welcome them and introduce the character. Do not mention "Dungeons & Dragons".';
 
 export const OUTRO_SYSTEM_MESSAGE =
-	'After we finish the story, you need to conclude the game. Congratulate the player on completing their quest. Ask people to help support games like these via Patreon to help pay for the cost of running the game. Do not ask the player to do anything, only conclude the story. Do not mention "Dungeons & Dragons" or the story itself.';
+	'After we finish the story, you need to conclude the game. Congratulate the player on completing their quest. Ask people to help support games like these via Patreon to help pay for the cost of running the game or to help support the channel by liking and subscribing. Do not ask the player to do anything, only conclude the story. Do not mention "Dungeons & Dragons" or the story itself.';

@@ -4,7 +4,6 @@ import { ChatCompletionRequestMessage } from 'openai';
 import {
 	STORY_PROMPT_SYSTEM_MESSAGE,
 	ROLL_PROMPT_SYSTEM_MESSAGE,
-	VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE,
 } from '@/consts/chronicles/prompts';
 import { openai } from '@/utilities/openai';
 
@@ -35,16 +34,11 @@ export default async function promptHandler(req: Request, res: Response) {
 		const story: string | undefined =
 			storyCompletion.data.choices[0].message?.content;
 
-		const [rollCompletionResponse, visualDescriptionCompletionResponse] =
-			await Promise.all([
-				rollCompletion(story as string),
-				visualDescriptionCompletion(story as string, processedMessages),
-			]);
+		const rollCompletionResponse = await rollCompletion(story as string);
 
 		res.status(200).json({
 			story,
 			roll_dice: rollCompletionResponse?.toLowerCase().includes('true'),
-			visual_description: visualDescriptionCompletionResponse,
 		});
 	} catch (error: any) {
 		console.log(error.response.data);
@@ -62,37 +56,6 @@ const rollCompletion = async (story: string) => {
 		});
 
 		return rollCompletion.data.choices[0].text;
-	} catch (error: any) {
-		console.log(error.response.data);
-		return;
-	}
-};
-
-const visualDescriptionCompletion = async (
-	story: string,
-	processedMessages: ChatCompletionRequestMessage[],
-) => {
-	const messages: ChatCompletionRequestMessage[] = [
-		{
-			role: 'system',
-			content: VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE,
-		},
-		...processedMessages,
-		{
-			role: 'assistant',
-			content: story,
-		},
-	];
-
-	try {
-		const visualDescriptionCompletion = await openai.createChatCompletion({
-			model: 'gpt-4',
-			messages,
-			temperature: 0.3,
-			max_tokens: 200,
-		});
-
-		return visualDescriptionCompletion.data.choices[0].message?.content;
 	} catch (error: any) {
 		console.log(error.response.data);
 		return;

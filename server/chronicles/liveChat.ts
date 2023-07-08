@@ -7,8 +7,13 @@ const youtube = google.youtube({
 });
 
 export default async function youTubeChatHandler(req: Request, res: Response) {
-	const messages = await getRecentChatMessages({ videoId: req.body.videoId });
-	res.status(200).json({ messages });
+	try {
+		const messages = await getRecentChatMessages({ videoId: req.body.videoId });
+		res.status(200).json({ messages });
+	} catch (error: any) {
+		console.log(error);
+		res.status(500).json({ error: error.response.data });
+	}
 }
 
 async function getRecentChatMessages({ videoId }: { videoId: string }) {
