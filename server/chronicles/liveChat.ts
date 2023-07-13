@@ -55,12 +55,16 @@ async function getChatMessages(liveChatId: string) {
 	});
 
 	return response.data.items?.map((item: any) => {
+		const includesTaggedUser = item.snippet.displayMessage
+			.toLowerCase()
+			.replace(/\s/g, '')
+			.includes('@48chronicles');
+
 		return {
 			message: item.snippet.displayMessage,
 			username: item.authorDetails.displayName,
 			timestamp: item.snippet.publishedAt,
-			includesTaggedUser:
-				item.snippet.displayMessage.includes('@48 Chronicles'),
+			includesTaggedUser,
 		};
 	});
 }
