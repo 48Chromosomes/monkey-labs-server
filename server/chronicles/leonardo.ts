@@ -32,7 +32,7 @@ export default async function imageGenerationHandler(
 			modelId: 'ac614f96-1082-45bf-be9d-757f2d31c174',
 			width: req.body.width,
 			height: req.body.height,
-			sd_version: 'v1_5',
+			sd_version: 'v2',
 			num_images: 1,
 			guidance_scale: 15,
 			public: false,
