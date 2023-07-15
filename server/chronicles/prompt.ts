@@ -23,7 +23,7 @@ export default async function promptHandler(req: Request, res: Response) {
 
 	try {
 		const storyCompletion = await openai.createChatCompletion({
-			model: 'gpt-4',
+			model: 'gpt-3.5-turbo',
 			messages,
 			temperature: 0.8,
 		});
