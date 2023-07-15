@@ -22,14 +22,14 @@ export default async function outroHandler(req: Request, res: Response) {
 	];
 
 	try {
-		const introCompletion = await openai.createChatCompletion({
+		const outroCompletion = await openai.createChatCompletion({
 			model: 'gpt-4',
 			messages,
 			temperature: 0.8,
 		});
 
 		res.status(200).json({
-			outro: introCompletion.data.choices[0].message?.content,
+			outro: outroCompletion.data.choices[0].message?.content,
 		});
 	} catch (error: any) {
 		console.log(error.response.data);

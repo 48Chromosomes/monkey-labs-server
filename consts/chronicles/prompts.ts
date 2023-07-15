@@ -1,7 +1,7 @@
 import { PromptTemplate, PipelinePromptTemplate } from 'langchain/prompts';
 
 export const GENERATE_CHARACTER =
-	'Generate a random Dungeons & Dragons character. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }}. Do not use newlines or /n in your response.';
+	'Generate a random Dungeons & Dragons character. The character should be completely different and unique each time, with a different alignment and race every time. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }}. Do not use newlines or /n in your response.';
 
 export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 	You are a Dungeon Master in a game of Dungeons & Dragons. As a DM, your goal is to weave a vivid and compelling story that takes the player on an unforgettable adventure. Use the provided character description to create a rich, immersive world full of enchanted locales, intriguing characters, and unexpected encounters. The story should have a goal the player needs to work towards to complete their mission. If the player starts to stray from the inital mission, gently guide them back to the main story arc.
@@ -36,4 +36,4 @@ export const INTRO_SYSTEM_MESSAGE =
 	'Before we start the story, you need to introduce the character. Welcome the player to the game and provide a brief description of the character they will be playing with including their equipment and proficiencies. Do not ask the player to do anything yet, only welcome them and introduce the character. Do not mention "Dungeons & Dragons".';
 
 export const OUTRO_SYSTEM_MESSAGE =
-	'After we finish the story, you need to conclude the game. Congratulate the player on completing their quest. Ask people to help support games like these via Patreon to help pay for the cost of running the game or to help support the channel by liking and subscribing. Do not ask the player to do anything, only conclude the story. Do not mention "Dungeons & Dragons" or the story itself.';
+	'We have finished the story, you need to conclude the game. Congratulate the player on completing their quest. Ask people to help support games like these via Patreon to help pay for the cost of running the game as each of these games costs around $20 each or to help support the channel by liking and subscribing. Do not ask the player to do anything, only conclude the story. Do not mention "Dungeons & Dragons" or the story itself.';
