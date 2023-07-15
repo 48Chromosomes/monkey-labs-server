@@ -55,10 +55,13 @@ async function getChatMessages(liveChatId: string) {
 	});
 
 	return response.data.items?.map((item: any) => {
-		const includesTaggedUser = item.snippet.displayMessage
+		const formattedMessage = item.snippet.displayMessage
 			.toLowerCase()
-			.replace(/\s/g, '')
-			.includes('@48chronicles');
+			.replace(/\s/g, '');
+
+		const includesTaggedUser =
+			formattedMessage.includes('@48chronicles') ||
+			formattedMessage.includes('@48c');
 
 		return {
 			message: item.snippet.displayMessage,
