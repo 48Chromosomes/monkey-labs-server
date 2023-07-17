@@ -23,7 +23,7 @@ export default async function outroHandler(req: Request, res: Response) {
 
 	try {
 		const outroCompletion = await openai.createChatCompletion({
-			model: 'gpt-4',
+			model: 'gpt-3.5-turbo-16k',
 			messages,
 			temperature: 0.8,
 		});

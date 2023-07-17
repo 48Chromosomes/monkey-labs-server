@@ -82,7 +82,7 @@ const visualDescriptionCompletion = async (
 
 	try {
 		const visualDescriptionCompletion = await openai.createChatCompletion({
-			model: 'gpt-4',
+			model: 'gpt-3.5-turbo-16k',
 			messages,
 			temperature: 0.3,
 			max_tokens: 200,
