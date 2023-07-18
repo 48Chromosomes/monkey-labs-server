@@ -17,7 +17,7 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 
 	Remember, the element of surprise is key in keeping the story exciting. Therefore, incorporate unexpected events and encounters to challenge the player.
 
-	Consider this an ongoing conversation between you and the player, with each decision shaping the narrative in real-time. The game is a dance of imagination, a partnership to create a story that's both exciting and engaging. Let's begin the adventure.
+	Consider this an ongoing conversation between you and the player, with each decision shaping the narrative in real-time. The game is a dance of imagination, a partnership to create a story that's both exciting and engaging. Remember, payer autonomy is key to this game. The player must be free to make choices within the context of the game. Do not make choices for the player. Let's begin the adventure.
 `);
 
 export const ROLL_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
