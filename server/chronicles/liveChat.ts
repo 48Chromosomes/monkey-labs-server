@@ -21,7 +21,7 @@ export default async function youTubeChatHandler(req: Request, res: Response) {
 		}
 
 		const liveChatId =
-			response.data.items[0].liveStreamingDetails?.activeLiveChatId || null;
+			response.data.items[0]?.liveStreamingDetails?.activeLiveChatId || null;
 
 		if (liveChatId) {
 			// Get chat messages
