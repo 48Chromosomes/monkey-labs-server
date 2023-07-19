@@ -16,48 +16,48 @@ export default async function youTubeChatHandler(req: Request, res: Response) {
 			part: ['liveStreamingDetails'],
 		});
 
-		if (
-			!response.data.items ||
-			!response.data.items[0] ||
-			!response.data.items[0].liveStreamingDetails
-		) {
+		if (!response.data.items) {
 			throw new Error(JSON.stringify(response));
 		}
 
 		const liveChatId =
-			response.data.items[0].liveStreamingDetails.activeLiveChatId || '';
+			response.data.items[0].liveStreamingDetails?.activeLiveChatId || null;
 
-		// Get chat messages
-		const chatResponse = await youtube.liveChatMessages.list({
-			liveChatId,
-			part: ['snippet', 'authorDetails'],
-		});
+		if (liveChatId) {
+			// Get chat messages
+			const chatResponse = await youtube.liveChatMessages.list({
+				liveChatId,
+				part: ['snippet', 'authorDetails'],
+			});
 
-		const messages = chatResponse.data.items?.map((item: any) => {
-			const formattedMessage = item.snippet.displayMessage
-				.toLowerCase()
-				.replace(/\s/g, '');
+			const messages = chatResponse.data.items?.map((item: any) => {
+				const formattedMessage = item.snippet.displayMessage
+					.toLowerCase()
+					.replace(/\s/g, '');
 
-			const includesTaggedUser =
-				formattedMessage.includes('@48chronicles') ||
-				formattedMessage.includes('@48c');
+				const includesTaggedUser =
+					formattedMessage.includes('@48chronicles') ||
+					formattedMessage.includes('@48c');
 
-			return {
-				message: item.snippet.displayMessage,
-				username: item.authorDetails.displayName,
-				timestamp: item.snippet.publishedAt,
-				includesTaggedUser,
-			};
-		});
+				return {
+					message: item.snippet.displayMessage,
+					username: item.authorDetails.displayName,
+					timestamp: item.snippet.publishedAt,
+					includesTaggedUser,
+				};
+			});
 
-		const currentTime = Date.now();
+			const currentTime = Date.now();
 
-		const recentChats = messages?.filter((message: any) => {
-			const messageTime = Date.parse(message.timestamp);
-			return currentTime - messageTime <= 60000;
-		});
+			const recentChats = messages?.filter((message: any) => {
+				const messageTime = Date.parse(message.timestamp);
+				return currentTime - messageTime <= 60000;
+			});
 
-		res.status(200).json({ messages: recentChats });
+			res.status(200).json({ messages: recentChats });
+		} else {
+			res.status(500).json({ error: 'No live chat ID found.' });
+		}
 	} catch (error: any) {
 		console.log(error);
 		res.status(500).json({ error: error.message });
