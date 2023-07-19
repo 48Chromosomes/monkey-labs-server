@@ -21,7 +21,7 @@ export default async function youTubeChatHandler(req: Request, res: Response) {
 			!response.data.items[0] ||
 			!response.data.items[0].liveStreamingDetails
 		) {
-			throw new Error('Live chat ID not found');
+			throw new Error(JSON.stringify(response));
 		}
 
 		const liveChatId =
