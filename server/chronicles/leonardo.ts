@@ -3,6 +3,7 @@ import { ChatCompletionRequestMessage } from 'openai';
 import api from 'api';
 
 import { openai } from '@/utilities/openai';
+import { GPT_MODEL } from '@/consts/chronicles';
 
 import { VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE } from '@/consts/chronicles/prompts';
 
@@ -82,7 +83,7 @@ const visualDescriptionCompletion = async (
 
 	try {
 		const visualDescriptionCompletion = await openai.createChatCompletion({
-			model: 'gpt-3.5-turbo-16k',
+			model: GPT_MODEL,
 			messages,
 			temperature: 0.3,
 			max_tokens: 200,

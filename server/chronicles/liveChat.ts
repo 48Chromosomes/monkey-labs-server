@@ -10,6 +10,8 @@ export default async function youTubeChatHandler(req: Request, res: Response) {
 	try {
 		const videoId = req.body.videoId;
 
+		console.log(`'${videoId}'`);
+
 		// Get Live Chat ID
 		const response = await youtube.videos.list({
 			id: [videoId],
@@ -22,6 +24,8 @@ export default async function youTubeChatHandler(req: Request, res: Response) {
 
 		const liveChatId =
 			response.data.items[0]?.liveStreamingDetails?.activeLiveChatId || null;
+
+		console.log(response.data);
 
 		if (liveChatId) {
 			// Get chat messages
@@ -46,6 +50,8 @@ export default async function youTubeChatHandler(req: Request, res: Response) {
 					includesTaggedUser,
 				};
 			});
+
+			console.log(chatResponse.data);
 
 			const currentTime = Date.now();
 

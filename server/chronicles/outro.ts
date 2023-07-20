@@ -6,6 +6,7 @@ import {
 	OUTRO_SYSTEM_MESSAGE,
 } from '@/consts/chronicles/prompts';
 import { openai } from '@/utilities/openai';
+import { GPT_MODEL } from '@/consts/chronicles';
 
 export default async function outroHandler(req: Request, res: Response) {
 	const messages: ChatCompletionRequestMessage[] = [
@@ -23,7 +24,7 @@ export default async function outroHandler(req: Request, res: Response) {
 
 	try {
 		const outroCompletion = await openai.createChatCompletion({
-			model: 'gpt-3.5-turbo-16k',
+			model: GPT_MODEL,
 			messages,
 			temperature: 0.8,
 		});

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { ChatCompletionRequestMessage } from 'openai';
 
 import { STORY_PROMPT_SYSTEM_MESSAGE } from '@/consts/chronicles/prompts';
+import { GPT_MODEL } from '@/consts/chronicles';
 import { openai } from '@/utilities/openai';
 
 export default async function promptHandler(req: Request, res: Response) {
@@ -23,7 +24,7 @@ export default async function promptHandler(req: Request, res: Response) {
 
 	try {
 		const storyCompletion = await openai.createChatCompletion({
-			model: 'gpt-3.5-turbo-16k',
+			model: GPT_MODEL,
 			messages,
 			temperature: 0.8,
 		});
