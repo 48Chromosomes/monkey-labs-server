@@ -17,7 +17,7 @@ export default async function synthesizeHandler(req: Request, res: Response) {
 			audioConfig: {
 				audioEncoding: 'MP3',
 				pitch: 1,
-				speakingRate: 1,
+				speakingRate: 1.1,
 			},
 		});
 
