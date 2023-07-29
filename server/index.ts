@@ -14,6 +14,7 @@ import synthesizeHandler from './chronicles/synthesize';
 import youTubeChatHandler from './chronicles/liveChat';
 import introHandler from './chronicles/intro';
 import outroHandler from './chronicles/outro';
+import elevenlabsHandler from './chronicles/elevenlabs';
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.post('/chronicles/synthesize', synthesizeHandler);
 app.post('/chronicles/livechat', youTubeChatHandler);
 app.post('/chronicles/intro', introHandler);
 app.get('/chronicles/outro', outroHandler);
+app.post('/chronicles/elevenlabs', elevenlabsHandler);
 
 app.listen(app.get('port'), () => {
 	console.log(`Server is running on port ${app.get('port')}`);
