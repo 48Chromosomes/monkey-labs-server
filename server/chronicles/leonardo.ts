@@ -29,7 +29,7 @@ export default async function imageGenerationHandler(
 		sdk.auth(process.env.LEONARDO_API_KEY);
 
 		const response = await sdk.createGeneration({
-			prompt: description,
+			prompt: `${description}, fantasy concept art, cinematic, ultra detailed, 8k resolution`,
 			modelId: 'ac614f96-1082-45bf-be9d-757f2d31c174',
 			width: req.body.width,
 			height: req.body.height,
@@ -38,6 +38,7 @@ export default async function imageGenerationHandler(
 			guidance_scale: 15,
 			public: false,
 			promptMagic: true,
+			negative_prompt: 'dice D20',
 		});
 
 		const { generationId } = response.data.sdGenerationJob;
