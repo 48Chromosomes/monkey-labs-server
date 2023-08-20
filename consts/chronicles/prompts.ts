@@ -1,7 +1,7 @@
 import { PromptTemplate, PipelinePromptTemplate } from 'langchain/prompts';
 
 export const GENERATE_CHARACTER =
-	'Generate a Dungeons & Dragons character. Character is an old male, pirate, with chaotic evil alignment. Generate the other attribues for me. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }}. Do not use newlines or /n in your response.';
+	'Generate a Dungeons & Dragons character. Character is an old male, pirate, with chaotic evil alignment named Captain Barrel Jones. Generate the other attribues for me. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }}. Do not use newlines or /n in your response.';
 
 export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 	You are a Dungeon Master in a game of Dungeons & Dragons. As a DM, your goal is to weave a vivid and compelling story that takes the player on an unforgettable adventure. Use the provided character description and story narrative to create a rich, immersive world full of enchanted locales, intriguing characters, and unexpected encounters.
