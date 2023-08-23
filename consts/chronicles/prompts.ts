@@ -29,11 +29,7 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
 	PromptTemplate.fromTemplate(`
-	Drawing upon the depth, emotions, and character nuances from the entire provided story, create a stable diffusion prompt that vividly captures the atmosphere and key details of the most recent scene described. Your prompt should paint a clear picture, highlighting significant interactions, emotions, and visual elements that define the moment. Only output the Stable Diffusion prompt, nothing else.
-	
-	Main Character:
-	{character}
-	';
+	You are an AI assistant tasked with creating a Stable diffusion prompt for a Dungeons & Dragons story. Your role is to read the story provided, and provide a description of most recent message. Your response should be a comma seperated list of nouns, verbs, and adjectives that describe the scene, do not include proper nouns. Describe the characters, the location, and the emotion of the scene. Your response should only describe the most recent prompt. Only output the Stable Diffusion prompt, nothing else.';
 `);
 
 export const INTRO_SYSTEM_MESSAGE =
