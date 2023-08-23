@@ -95,7 +95,7 @@ const visualDescriptionCompletion = async (
 			model: GPT_MODEL,
 			messages,
 			temperature: 0.3,
-			max_tokens: 200,
+			max_tokens: 100,
 		});
 
 		return visualDescriptionCompletion.data.choices[0].message?.content;
