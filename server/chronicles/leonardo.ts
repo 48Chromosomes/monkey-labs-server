@@ -28,6 +28,8 @@ export default async function imageGenerationHandler(
 
 		sdk.auth(process.env.LEONARDO_API_KEY);
 
+		console.log(description);
+
 		const response = await sdk.createGeneration({
 			prompt: `${description}, fantasy concept art, cinematic, ultra detailed, 8k resolution`,
 			modelId: 'ac614f96-1082-45bf-be9d-757f2d31c174',
