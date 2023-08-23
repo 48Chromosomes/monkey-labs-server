@@ -23,7 +23,10 @@ export default async function imageGenerationHandler(
 					return { role, content: content.story };
 				});
 
-			description = await visualDescriptionCompletion(processedMessages);
+			description = await visualDescriptionCompletion(
+				processedMessages,
+				req.body.character,
+			);
 		}
 
 		sdk.auth(process.env.LEONARDO_API_KEY);
@@ -40,7 +43,7 @@ export default async function imageGenerationHandler(
 			guidance_scale: 15,
 			public: false,
 			promptMagic: true,
-			negative_prompt: 'dice D20',
+			negative_prompt: 'dice D20 roll',
 		});
 
 		const { generationId } = response.data.sdGenerationJob;
@@ -75,11 +78,14 @@ const pollGeneration = async (id: string) => {
 
 const visualDescriptionCompletion = async (
 	processedMessages: ChatCompletionRequestMessage[],
+	character: any,
 ) => {
 	const messages: ChatCompletionRequestMessage[] = [
 		{
 			role: 'system',
-			content: VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE,
+			content: await VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE.format({
+				character: JSON.stringify(character),
+			}),
 		},
 		processedMessages[processedMessages.length - 1],
 	];

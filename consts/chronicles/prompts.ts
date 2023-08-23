@@ -28,7 +28,13 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 `);
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
-	'Drawing upon the depth, emotions, and character nuances from the entire provided story, create a stable diffusion prompt that vividly captures the atmosphere and key details of the most recent scene described. Your prompt should paint a clear picture, highlighting significant interactions, emotions, and visual elements that define the moment. Only output the Stable Diffusion prompt, nothing else.';
+	PromptTemplate.fromTemplate(`
+	Drawing upon the depth, emotions, and character nuances from the entire provided story, create a stable diffusion prompt that vividly captures the atmosphere and key details of the most recent scene described. Your prompt should paint a clear picture, highlighting significant interactions, emotions, and visual elements that define the moment. Only output the Stable Diffusion prompt, nothing else.
+	
+	Main Character:
+	{character}
+	';
+`);
 
 export const INTRO_SYSTEM_MESSAGE =
 	'Before we start the story, you need to introduce the character. Welcome the player to the game and provide a brief description of the character they will be playing with including their equipment and proficiencies. Do not ask the player to do anything yet, only welcome them and introduce the character. Do not mention "Dungeons & Dragons". Do not mention "Tag @48 Chronicles in the livechat to suggest the next course of action" this time, but do mention it in the next segment.';
