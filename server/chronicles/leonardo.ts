@@ -34,7 +34,7 @@ export default async function imageGenerationHandler(
 		console.log(description);
 
 		const response = await sdk.createGeneration({
-			prompt: `${description}, fantasy concept art, cinematic, ultra detailed, 8k resolution`,
+			prompt: `${description}, fantasy concept art, cinematic, ultra detailed, highly detailed face, 8k resolution`,
 			modelId: 'ac614f96-1082-45bf-be9d-757f2d31c174',
 			width: req.body.width,
 			height: req.body.height,
