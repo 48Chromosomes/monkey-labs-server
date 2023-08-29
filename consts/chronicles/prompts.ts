@@ -10,7 +10,7 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 	{character}
 
 	Story:
-	
+	The player is a previously wealthy business man who has now fallen on hard times. He has lost his business, his home, and his family. He is now living on the streets. His previous success in business was given to him by a deamon he summoned with his cult. The player decides that he will again summon the deamon to restore his wealth and status. The player must jounrey deep into the heart of the forest to find the cult shrine and summon the deamon. Once the deamon has been summoned, the deamon tells him that he can sense his desparation and will grant him his wish. However, the deamon will only grant his wish if he can prove his loyalty to the deamon by killing all the other leaders of the cult. Th player must kill all 4 other cult leaders without them noticing what you are up to. If the player manages to kill all 4 cult leaders they win the game, however, if they get caught the other cult leaders will kill the player and the player loses.
 
 	For every scene, provide a short but detailed narrative with atmospheric descriptions and engaging dialogue. If a situation arises where the player needs to roll a D20 dice, seamlessly weave this into the narrative. However, this is an either-or situation. In each segment, you should either prompt the player to roll the dice or present an open-ended situation for the next action, but not both at the same time.
 
