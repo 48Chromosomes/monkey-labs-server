@@ -31,9 +31,12 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
 	PromptTemplate.fromTemplate(`
-	You are an AI assistant tasked with creating a Stable diffusion prompt for a fantasy story. Read the most recent story segment and paint a scene using short description of what the main character is doing and where.
+	You are an AI assistant tasked with creating a Stable diffusion prompt for a fantasy story. Read the most recent story segment and the character and and paint a scene using short description of what the main character is doing and where. Focus mainly on what the character is doing but include a short description of the character.
 
-	For example, "wizard casting lightening spell at a dragon in a cave with a treasure chest in the background".
+	For example, "dark haired robed wizard casting lightening spell at a dragon in a cave with a treasure chest in the background".
+	
+	Main Character:
+	{character}
 	
 	Do not mention names. Your response should only describe the most recent prompt. Only output the Stable Diffusion prompt, nothing else.';
 `);
