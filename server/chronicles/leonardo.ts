@@ -41,7 +41,7 @@ export default async function imageGenerationHandler(
 			guidance_scale: 15,
 			public: false,
 			promptMagic: true,
-			negative_prompt: 'dice D20 roll',
+			negative_prompt: 'dice D20 roll crown',
 		});
 
 		const { generationId } = response.data.sdGenerationJob;
