@@ -92,7 +92,7 @@ const visualDescriptionCompletion = async (
 		const visualDescriptionCompletion = await openai.createChatCompletion({
 			model: GPT_MODEL,
 			messages,
-			temperature: 0.3,
+			temperature: 0.5,
 			max_tokens: 100,
 		});
 
