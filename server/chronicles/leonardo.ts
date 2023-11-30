@@ -31,32 +31,28 @@ export default async function imageGenerationHandler(
 
 		sdk.auth(process.env.LEONARDO_API_KEY);
 
-		try {
-			const response = await sdk.createGeneration({
-				prompt: `${description}, comic book style, cinematic, ultra detailed, highly detailed face, 8k resolution`,
-				modelId: '2067ae52-33fd-4a82-bb92-c2c55e7d2786', // AlbedoBase XL
-				width: req.body.width,
-				height: req.body.height,
-				sd_version: 'v2',
-				num_images: 1,
-				guidance_scale: 15,
-				public: false,
-				promptMagic: true,
-				negative_prompt: 'dice D20 roll crown',
-				nsfw: true,
-				alchemy: true,
-				presetStyle: 'ILLUSTRATION',
-				init_image_id: '84f81194-ce74-4b42-b638-0c38c72427ab',
-			});
+		const response = await sdk.createGeneration({
+			prompt: `${description}, comic book style, cinematic, ultra detailed, highly detailed face, 8k resolution`,
+			modelId: '2067ae52-33fd-4a82-bb92-c2c55e7d2786', // AlbedoBase XL
+			width: req.body.width,
+			height: req.body.height,
+			sd_version: 'v2',
+			num_images: 1,
+			guidance_scale: 15,
+			public: false,
+			promptMagic: true,
+			negative_prompt: 'dice D20 roll crown',
+			nsfw: true,
+			alchemy: true,
+			presetStyle: 'ILLUSTRATION',
+			init_image_id: '84f81194-ce74-4b42-b638-0c38c72427ab',
+		});
 
-			const { generationId } = response.data.sdGenerationJob;
+		const { generationId } = response.data.sdGenerationJob;
 
-			const url = await pollGeneration(generationId);
+		const url = await pollGeneration(generationId);
 
-			res.status(200).json({ url });
-		} catch (error) {
-			console.error(error);
-		}
+		res.status(200).json({ url });
 	} catch (error) {
 		console.error(error);
 		res
