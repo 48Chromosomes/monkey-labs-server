@@ -1,7 +1,7 @@
 import { PromptTemplate, PipelinePromptTemplate } from 'langchain/prompts';
 
 export const GENERATE_CHARACTER =
-	'Generate a Dungeons & Dragons character style. The chartacter is a little blonde human girl called Charlotte with innocent class who is possessed by a demon and has only her teddy bear as equipment. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }, appearance: { hair_color: string; age: string; body_type: string; clothing: string; }}. Do not use newlines or /n in your response.';
+	'Generate a Dungeons & Dragons character style. The chartacter is a super-hero called Snow Roach who is a true neutral who wears a white and black suit with a helmet shaped like a cockroachs head, he is a fighter for true justice and equality. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }, appearance: { hair_color: string; age: string; body_type: string; clothing: string; }}. Do not use newlines or /n in your response.';
 
 export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 	You are a Dungeon Master in a game of Dungeons & Dragons. As a DM, your goal is to weave a vivid and compelling story that takes the player on an unforgettable adventure. Use the provided character description and story narrative to create a rich, immersive world full of enchanted locales, intriguing characters, and unexpected encounters. You must not make decisions for the player, but rather provide them with a world in which they can make their own choices.
@@ -10,7 +10,7 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 	{character}
 
 	Story:
-	The player is playing as a young, innocent girl who is crying in bed one night. She is mistreated by everyone in her life despite doing nothing to deserve it. She is approached by a deamon who tells her she can help the girl get revenge on the people who have mistreated her if she agrees to allow the deamon to possess her. She agrees and now has the power to do whatever she wants using her mind. She decides to start by killing her parents. Once her parents are dead she moves on to the bullies at school. The player must get revenge on her bullies and burn down the school. Once the player has done this the deamon tells the girl not to stop. The player must continue to kill until the entire town has paid the price. Once the town is destroyed, the game is over and the player wins.
+	The player is playing as a super hero named Snow Roach. Snow Roach has a very literal interpritation of the words 'justice' and 'equality'. He believes that racism is rampant and needs to be applied equally to everyone. His mission is to seek out people who have been victims of racism and help them get revenge, regardless of which race. He truely sees equality in a very literal way. The Snow Roach got his powers from a freak accident in a lab where his creator was working on an experimental serum designed to enhance human abilities, but a HR discriminatory decision led to a mishap, creating Snow Roach. His arch nemesis, Crabman, is in an underwater lair and is terrorising the city with his army of crabs who believe that the crab race is under attack. His crabs march through the streets, rioting and hurting people due to a misguided view of justice. Snow Roach must stop Crabman and his army of crabs. The player must first confront the crabs in the streets, then find Crabman's lair and defeat him. Come up with various different scenarios the player must overcome in order to stop the crab army and find the lair. Once the Snow Roach has found the lair and defeated Crabman, the story is over.
 
 	You must stick to the story at all times. Do not deviate. Do not make decisions for the player. Use the offical D&D rules of combat if the player is in a combat situation.
 
@@ -29,9 +29,9 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
 	PromptTemplate.fromTemplate(`
-	You are an AI assistant tasked with creating a Stable diffusion prompt for a fantasy story. Read the most recent story segment and the character and and paint a scene using short description of what the main character is doing and where. Focus mainly on what the character is doing but include a short description of the character.
+	You are an AI assistant tasked with creating a Stable diffusion prompt for a fantasy story. Read the most recent story segment and and paint a scene using short description of what the main character is doing and where. Focus mainly on what the character is doing, not the character description.
 
-	For example, "dark haired robed wizard casting lightening spell at a dragon in a cave with a treasure chest in the background".
+	For example, "wizard casting lightening spell at a dragon in a cave with a treasure chest in the background".
 	
 	Main Character:
 	{character}

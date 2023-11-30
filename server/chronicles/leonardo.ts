@@ -7,7 +7,7 @@ import { GPT_MODEL } from '@/consts/chronicles';
 
 import { VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE } from '@/consts/chronicles/prompts';
 
-const sdk = api('@leonardoai/v1.0#28807z41owlgnis8jg');
+const sdk = api('@leonardoai/v1.0#l1va2x2lo861fet');
 
 export default async function imageGenerationHandler(
 	req: Request,
@@ -31,24 +31,32 @@ export default async function imageGenerationHandler(
 
 		sdk.auth(process.env.LEONARDO_API_KEY);
 
-		const response = await sdk.createGeneration({
-			prompt: `${description}, fantasy concept art, cinematic, ultra detailed, highly detailed face, 8k resolution`,
-			modelId: 'ac614f96-1082-45bf-be9d-757f2d31c174',
-			width: req.body.width,
-			height: req.body.height,
-			sd_version: 'v2',
-			num_images: 1,
-			guidance_scale: 15,
-			public: false,
-			promptMagic: true,
-			negative_prompt: 'dice D20 roll crown',
-		});
+		try {
+			const response = await sdk.createGeneration({
+				prompt: `${description}, comic book style, cinematic, ultra detailed, highly detailed face, 8k resolution`,
+				modelId: '2067ae52-33fd-4a82-bb92-c2c55e7d2786', // AlbedoBase XL
+				width: req.body.width,
+				height: req.body.height,
+				sd_version: 'v2',
+				num_images: 1,
+				guidance_scale: 15,
+				public: false,
+				promptMagic: true,
+				negative_prompt: 'dice D20 roll crown',
+				nsfw: true,
+				alchemy: true,
+				presetStyle: 'ILLUSTRATION',
+				init_image_id: '84f81194-ce74-4b42-b638-0c38c72427ab',
+			});
 
-		const { generationId } = response.data.sdGenerationJob;
+			const { generationId } = response.data.sdGenerationJob;
 
-		const url = await pollGeneration(generationId);
+			const url = await pollGeneration(generationId);
 
-		res.status(200).json({ url });
+			res.status(200).json({ url });
+		} catch (error) {
+			console.error(error);
+		}
 	} catch (error) {
 		console.error(error);
 		res
