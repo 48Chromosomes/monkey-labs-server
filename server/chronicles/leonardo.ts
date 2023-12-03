@@ -32,7 +32,7 @@ export default async function imageGenerationHandler(
 		sdk.auth(process.env.LEONARDO_API_KEY);
 
 		const response = await sdk.createGeneration({
-			prompt: `white costume, cockroach helmet, blue eyes, ${description}, comic book style, cinematic, ultra detailed, highly detailed face, 8k resolution`,
+			prompt: `${description}, comic book style, ultra detailed, 8k resolution`,
 			modelId: '2067ae52-33fd-4a82-bb92-c2c55e7d2786', // AlbedoBase XL
 			width: req.body.width,
 			height: req.body.height,
