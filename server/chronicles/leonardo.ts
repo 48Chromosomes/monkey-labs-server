@@ -45,6 +45,8 @@ export default async function imageGenerationHandler(
 			nsfw: true,
 			alchemy: true,
 			presetStyle: 'ILLUSTRATION',
+			highResolution: true,
+			expandedDomain: true,
 		});
 
 		const { generationId } = response.data.sdGenerationJob;
