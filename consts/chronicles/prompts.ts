@@ -1,7 +1,7 @@
-import { PromptTemplate, PipelinePromptTemplate } from 'langchain/prompts';
+import { PromptTemplate, PipelinePromptTemplate } from "langchain/prompts";
 
 export const GENERATE_CHARACTER =
-	'Generate a Dungeons & Dragons character style. The chartacter is a male sourceror named Eldron, chaotic neutral alignment, Hermit background and a wand in equipment and proficiency in spell casting and sneaking. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }, appearance: { hair_color: string; age: string; body_type: string; clothing: string; }}. Do not use newlines or /n in your response.';
+  "Generate a Dungeons & Dragons character style. The chartacter is Santa Claus who has a machine gun, grenades, and a flame thrower. Your response should be valid JSON format for the following type: { alignment: string; background: string; class: string; equipment: string[]; name: string; sex: string; proficiencies: string[]; race: string; stats: { charisma: number; constitution: number; dexterity: number; intelligence: number; strength: number; wisdom: number; }, appearance: { hair_color: string; age: string; body_type: string; clothing: string; }}. Do not use newlines or /n in your response.";
 
 export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 	You are a Dungeon Master in a game of Dungeons & Dragons. As a DM, your goal is to weave a vivid and compelling story that takes the player on an unforgettable adventure. Use the provided character description and story narrative to create a rich, immersive world full of enchanted locales, intriguing characters, and unexpected encounters. You must not make decisions for the player, but rather provide them with a world in which they can make their own choices.
@@ -26,7 +26,7 @@ export const STORY_PROMPT_SYSTEM_MESSAGE = PromptTemplate.fromTemplate(`
 `);
 
 export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
-	PromptTemplate.fromTemplate(`
+  PromptTemplate.fromTemplate(`
 	You are an AI assistant tasked with creating a Stable diffusion prompt for a fantasy story. Read the most recent story segment and and paint a scene using short description of what the main character is doing and where. Focus mainly on what the character is doing, not the character description.
 
 	For example, "wizard casting lightening spell at a dragon in a cave with a treasure chest in the background".
@@ -38,7 +38,7 @@ export const VISUAL_DESCRIPTION_PROMPT_SYSTEM_MESSAGE =
 `);
 
 export const INTRO_SYSTEM_MESSAGE =
-	'Before we start the story, you need to introduce the character. Welcome the player to the game and provide a brief description of the character they will be playing with including their equipment and proficiencies. Do not ask the player to do anything yet, only welcome them and introduce the character. Keep the character introduction short. The intro should excite the player about what is coming. Do not mention "Dungeons & Dragons". Do not mention "Tag @48 Chronicles in the livechat to suggest the next course of action" this time, but do mention it in the next segment.';
+  'Before we start the story, you need to introduce the character. Welcome the player to the game and provide a brief description of the character they will be playing with including their equipment and proficiencies. Do not ask the player to do anything yet, only welcome them and introduce the character. Keep the character introduction short. The intro should excite the player about what is coming. Do not mention "Dungeons & Dragons". Do not mention "Tag @48 Chronicles in the livechat to suggest the next course of action" this time, but do mention it in the next segment.';
 
 export const OUTRO_SYSTEM_MESSAGE =
-	'We have finished the story, you need to conclude the game. Ask people to help support games like these via Patreon to help pay for the cost of running the game or to help support the channel by liking and subscribing, they can also sign up to the channels partner Elevenlabs (link in the video description). Encourage the player to share the channel with friends and communities they are part of so we can grow the channel, or join our Discod server linked in the description. Do not ask the player to do anything, only conclude the story. Do not mention "Dungeons & Dragons".';
+  'We have finished the story, you need to conclude the game. Ask people to help support games like these via Patreon to help pay for the cost of running the game or to help support the channel by liking and subscribing, they can also sign up to the channels partner Elevenlabs (link in the video description). Encourage the player to share the channel with friends and communities they are part of so we can grow the channel, or join our Discod server linked in the description. Do not ask the player to do anything, only conclude the story. Do not mention "Dungeons & Dragons".';
