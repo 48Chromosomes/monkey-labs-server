@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import timeout from 'connect-timeout';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ import elevenlabsHandler from './chronicles/elevenlabs';
 const app = express();
 
 app.use(express.json());
+app.use(timeout('60s'));
 app.use(
 	cors({
 		origin: '*',
