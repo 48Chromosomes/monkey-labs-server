@@ -32,7 +32,7 @@ export default async function imageGenerationHandler(
 		sdk.auth(process.env.LEONARDO_API_KEY);
 
 		const response = await sdk.createGeneration({
-			prompt: `${description}, mickey mouse, cartoon style, ultra detailed, 8k resolution`,
+			prompt: `${description}, ultra detailed, 8k resolution`,
 			modelId: '2067ae52-33fd-4a82-bb92-c2c55e7d2786', // AlbedoBase XL
 			width: req.body.width,
 			height: req.body.height,
@@ -44,9 +44,9 @@ export default async function imageGenerationHandler(
 			negative_prompt: 'dice D20 roll crown',
 			nsfw: true,
 			alchemy: true,
-			presetStyle: 'ILLUSTRATION',
-			highResolution: true,
-			expandedDomain: true,
+			//presetStyle: 'ILLUSTRATION',
+			//highResolution: true,
+			//expandedDomain: true,
 		});
 
 		const { generationId } = response.data.sdGenerationJob;
