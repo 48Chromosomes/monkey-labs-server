@@ -19,14 +19,15 @@ import elevenlabsHandler from './chronicles/elevenlabs';
 
 const app = express();
 
+app.use(cors({
+	origin: '*',
+	optionsSuccessStatus: 200,
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 app.use(timeout('60s'));
-app.use(
-	cors({
-		origin: '*',
-		optionsSuccessStatus: 200,
-	}),
-);
 
 app.set('port', process.env.PORT);
 
