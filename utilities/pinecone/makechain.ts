@@ -27,13 +27,13 @@ export const makeChain = (
       streaming: Boolean(onTokenStream),
       callbackManager: onTokenStream
         ? CallbackManager.fromHandlers({
-            async handleLLMNewToken(token) {
-              onTokenStream(token);
-            },
-          })
+          async handleLLMNewToken(token) {
+            onTokenStream(token);
+          },
+        })
         : undefined,
     }),
-    { prompt: PROMPTS[prompt] },
+    { type: "stuff", prompt: PROMPTS[prompt] },
   );
 
   return new ChatVectorDBQAChain({
